@@ -6,8 +6,6 @@ SQLAlchemy declarative base and metadata
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import MetaData
 
-# Naming convention for constraints
-# This ensures consistent naming across migrations
 convention = {
     "ix": "ix_%(column_0_label)s",
     "uq": "uq_%(table_name)s_%(column_0_name)s",
