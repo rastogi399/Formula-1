@@ -1,0 +1,65 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+.venv/
+ENV/
+
+# FastAPI / Uvicorn logs
+*.log
+logs/
+
+# Environment variables & secrets
+.env
+.env.*
+*.env
+
+# Python build artifacts
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# PyInstaller
+*.spec
+
+# Editor and IDE specific
+.vscode/
+.idea/
+
+# MyPy
+.mypy_cache/
+
+# Pyre type checker
+.pyre/
+
+# Pyright
+pyrightconfig.json
+
+# Pydantic validation cache
+.pydantic/
+
+# Test and coverage
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+coverage/
+.pytest_cache/
+
+# Static files (if generated)
+staticfiles/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Docker
+
