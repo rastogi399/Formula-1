@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --font-sans: Space Grotesk, Inter, sans-serif;
+  --font-mono: JetBrains Mono, monospace;
+
+  --radius-none: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+
+  --shadow-neo: 8px 8px 0px #000000;
+  --shadow-neo-hover: 12px 12px 0px #ff6a00;
+  --shadow-neo-active: 4px 4px 0px #000000;
+}
+
+/* ===== LANDING PAGE THEME (Neo-Brutalist) ===== */
+@layer base {
+  :root {
+    --background: #0f1115;
+    /* Deep charcoal background */
+    --foreground: #e6e7e9;
+    /* High-contrast neutral for primary text */
+    --secondary-text: #9ca3af;
+    /* Neutral gray for secondary text */
+    --card: #16181d;
+    /* Slightly lighter card background */
+    --card-foreground: #e6e7e9;
+    --popover: #16181d;
+    --popover-foreground: #e6e7e9;
+    --primary: #f97316;
+    /* Orange primary */
+    --primary-foreground: #ffffff;
+    --secondary: #16181d;
+    --secondary-foreground: #9ca3af;
+    --muted: #121217;
+    --muted-foreground: #9ca3af;
+    --accent: #f97316;
+    --accent-foreground: #ffffff;
+    --destructive: hsl(0 84% 60%);
+    --destructive-foreground: hsl(0 0% 100%);
+    --border: #202225;
+    /* subtle dark border */
+    --input: #1a1c20;
+    --ring: rgba(249,115,22,0.28);
+    --radius: 0px;
+
+    /* Chart Colors for Landing Page (if any) */
+    --chart-1: #f97316;
+    --chart-2: #ff8a42;
+    --chart-3: hsl(0 0% 0%);
+    --chart-4: hsl(0 0% 40%);
+    --chart-5: hsl(0 0% 60%);
+  }
+}
+
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@utility neo-shadow {
+  box-shadow: 8px 8px 0px #000000;
+}
+
+@utility neo-shadow-hover {
+  box-shadow: 12px 12px 0px #ff6a00;
+}
+
+@utility neo-shadow-active {
+  box-shadow: 4px 4px 0px #000000;
+}
+
+@utility neo-border {
+  border: 4px solid #000000;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-muted-foreground/50;
+}
+
+/* Utility overrides to map existing Tailwind utility classes to theme variables */
+.bg-white { background-color: var(--card) !important; }
+.text-black { color: var(--foreground) !important; }
+.border-black { border-color: var(--border) !important; }
+.bg-black { background-color: var(--background) !important; }
+.text-white { color: var(--primary-foreground) !important; }
+
+/* Map common gray text utilities to the neutral secondary palette for readability */
+.text-gray-800 { color: var(--foreground) !important; }
+.text-gray-700 { color: #c9cbd0 !important; }
+.text-gray-600 { color: var(--secondary-text) !important; }
+.text-gray-500 { color: #8f9398 !important; }
+
+/* Map light backgrounds (used for cards/sections) to layered dark tones */
+.bg-gray-50 { background-color: #111216 !important; }
+
+/* Replace inline purple hover shadows with orange where used */
+.hover\:shadow-\[12px_12px_0px_\#9945FF\]:hover { box-shadow: 12px 12px 0px var(--primary) !important; }
+
+/* Button focus/hover helpers */
+.btn-focus:focus { outline: none; box-shadow: 0 0 0 4px var(--ring); }
+.focus\:ring-primary:focus { box-shadow: 0 0 0 4px var(--ring); }
