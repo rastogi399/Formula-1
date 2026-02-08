@@ -1,0 +1,72 @@
+{
+  "name": "solana-copilot",
+  "version": "1.0.0",
+  "description": "AI Agent Wallet for Solana - Autonomous portfolio management through conversational AI",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && uvicorn app.main:app --reload --host 0.0.0.0 --port 8000",
+    "dev:workers": "cd backend && celery -A app.workers.celery_app worker --loglevel=info",
+    "build": "npm run build:frontend && npm run build:backend",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && pip install -r requirements.txt",
+    "build:programs": "cd programs && anchor build",
+    "test": "npm run test:frontend && npm run test:backend && npm run test:programs",
+    "test:frontend": "cd frontend && npm run test",
+    "test:backend": "cd backend && pytest app/tests/ -v",
+    "test:programs": "cd programs && anchor test",
+    "lint": "npm run lint:frontend && npm run lint:backend",
+    "lint:frontend": "cd frontend && npm run lint",
+    "lint:backend": "cd backend && ruff check .",
+    "format": "npm run format:frontend && npm run format:backend",
+    "format:frontend": "cd frontend && npm run format",
+    "format:backend": "cd backend && black . && ruff format .",
+    "docker:up": "cd infrastructure/docker && docker-compose up -d",
+    "docker:down": "cd infrastructure/docker && docker-compose down",
+    "docker:logs": "cd infrastructure/docker && docker-compose logs -f",
+    "db:migrate": "cd backend && alembic upgrade head",
+    "db:rollback": "cd backend && alembic downgrade -1",
+    "db:seed": "python scripts/seed_db.py",
+    "deploy:programs": "cd programs && anchor deploy --provider.cluster devnet",
+    "setup": "./scripts/setup.sh",
+    "clean": "rm -rf frontend/.next frontend/node_modules backend/__pycache__ backend/.pytest_cache programs/target"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/solana-copilot.git"
+  },
+  "keywords": [
+    "solana",
+    "ai",
+    "agent",
+    "wallet",
+    "defi",
+    "dca",
+    "portfolio",
+    "automation",
+    "langraph",
+    "anchor"
+  ],
+  "author": "Solana Copilot Team",
+  "license": "MIT",
+  "overrides": {
+    "react": "19.1.0",
+    "react-dom": "19.1.0"
+  },
+  "dependencies": {
+    "@nomicfoundation/hardhat-ethers": "^4.0.4",
+    "ethers": "^6.16.0"
+  }
+}
